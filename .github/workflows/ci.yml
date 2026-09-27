@@ -1,0 +1,21 @@
+name: COMP3104 CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify repository
+        run: |
+          echo "COMP3104 DevOps CI Pipeline"
+          echo "GitHub Actions is working successfully!"
+          ls -la
