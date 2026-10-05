@@ -14,8 +14,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Verify repository
-        run: |
-          echo "COMP3104 DevOps CI Pipeline"
-          echo "GitHub Actions is working successfully!"
-          ls -la
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "stable"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
