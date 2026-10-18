@@ -1,0 +1,29 @@
+language: node_js
+node_js:
+  - "stable"
+
+branches:
+  only:
+    - main
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm ci
+  - npm install -g yarn
+
+script:
+  # - yarn lint
+  - yarn build
+
+# Travis runs deployment only after a successful build on main, not on PRs.
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $github_token
+  local_dir: build
+  target_branch: gh-pages
+  on:
+    branch: main
